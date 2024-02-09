@@ -22,7 +22,7 @@ def get_screenshoot(champ_name: str, role: str):
         data.screenshot(f"{champ_name} {role}.png")
 
     except NoSuchElementException:
-        raise ValueError("Tem certeza de que escreveu certo?")
+        raise ValueError("Escrita errada ou dados insuficientes, tente novamente")
 
     except TimeoutException:
         raise TimeoutError("Timeout")

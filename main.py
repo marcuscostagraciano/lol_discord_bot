@@ -8,7 +8,7 @@ from src import get_reponse
 
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
-BOT_COMMAND: Final[str] = "!LOLKO"
+BOT_COMMAND: Final[str] = "!LOLKO "
 
 intents: Intents = Intents.default()
 intents.message_content = True

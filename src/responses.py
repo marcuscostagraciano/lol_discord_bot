@@ -16,7 +16,7 @@ role_abbreviation: Final[dict] = {
 
 async def get_reponse(*, BOT_COMMAND: str, msg: Message,
                       user_msg: str) -> NoReturn:
-    user_msg: str = user_msg[len(BOT_COMMAND) + 1:]
+    user_msg: str = user_msg[len(BOT_COMMAND):]
     # user_input: list[str] = user_msg.upper().split(" ")
 
     match user_input := user_msg.upper().split(" "):

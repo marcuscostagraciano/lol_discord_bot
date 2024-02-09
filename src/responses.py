@@ -22,6 +22,7 @@ async def get_reponse(*, BOT_COMMAND: str, msg: Message,
     match user_input[0]:
         case "?":
             await msg.channel.send("Use !LOLKO {nome do campeao} {lane}")
+
         case _:
             champ_name: str = user_input[0]
             role: str = user_input[1]

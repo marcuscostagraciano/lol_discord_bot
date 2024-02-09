@@ -8,6 +8,7 @@ from . import get_screenshot
 role_abbreviation: Final[dict] = {
     "T": "TOP",
     "J": "JUNGLE",
+    "JG": "JUNGLE",
     "M": "MID",
     "A": "ADC",
     "S": "SUPPORT"

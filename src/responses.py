@@ -25,10 +25,10 @@ async def get_reponse(*, BOT_COMMAND: str, msg: Message,
         case ["?"] | ["?", *_]:
             await msg.channel.send(f"Use {BOT_COMMAND} [nome do campeao] [lane]")
 
-        case [str(), str()]:
+        case [("B" | "BUILD"), str(), str()]:
             try:
-                champ_name: str = user_input[0]
-                role: str = user_input[1]
+                champ_name: str = user_input[1]
+                role: str = user_input[2]
 
                 if role in role_abbreviation:
                     role = role_abbreviation[role]

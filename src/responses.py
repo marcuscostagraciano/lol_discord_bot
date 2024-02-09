@@ -11,7 +11,8 @@ role_abbreviation: Final[dict] = {
     "JG": "JUNGLE",
     "M": "MID",
     "A": "ADC",
-    "S": "SUPPORT"
+    "S": "SUPPORT",
+    "SUP": "SUPPORT",
 }
 
 

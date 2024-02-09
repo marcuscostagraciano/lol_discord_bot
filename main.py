@@ -20,13 +20,14 @@ async def send_message(msg: Message, user_msg: str) -> None:
     if user_msg.startswith(BOT_COMMAND):
         user_msg = user_msg[len(BOT_COMMAND) + 1:]
 
-    try:
-        response: str = get_reponse(user_msg)
-        await msg.channel.send(f"{msg.author}, here's the build for {response}:",
-                               file=discord.File(f'{response}.png'))
-    except Exception as e:
-        print(e)
-
+        try:
+            response: str = get_reponse(user_msg)
+            filename: str = f"{response}.png"
+            await msg.channel.send(f"{msg.author}, here's the build for {response}:",
+                                   file=discord.File(filename))
+            os.remove(filename)
+        except Exception as e:
+            print(e)
 
 @client.event
 async def on_ready() -> None:

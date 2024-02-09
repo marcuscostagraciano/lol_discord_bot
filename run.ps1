@@ -14,4 +14,4 @@ cd $ScriptPath
 .\venv\Scripts\activate
 
 # Runs the bot script
-py .\main.py
+python .\main.py

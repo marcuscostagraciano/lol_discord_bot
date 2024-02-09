@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common import TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
 from typing import Final
 
@@ -20,6 +20,9 @@ def get_screenshoot(champ_name: str, role: str):
     try:
         data = driver.find_element(By.CLASS_NAME, HTML_CLASS_BUILD)
         data.screenshot(f"{champ_name} {role}.png")
+
+    except NoSuchElementException:
+        raise ValueError("Tem certeza de que escreveu certo?")
 
     except TimeoutException:
         raise TimeoutError("Timeout")

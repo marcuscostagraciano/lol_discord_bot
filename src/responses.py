@@ -41,11 +41,14 @@ async def get_reponse(*, BOT_COMMAND: str, msg: Message,
                                        file=File(filename))
                 rm(filename)
             except Exception as e:
-                print(e)
-                await msg.channel.send(f"[<@{msg.author.id}>]: {e}")
+                raise e
+
+        case [("W" | "WIKI"), str(), *objects]:
+            raise NotImplementedError("WIP - passed args: \n" +
+                                      f"{user_input[0]=} {user_input[1]=} {user_input[2:]=}")
 
         case _:
-            await msg.channel.send(
-                f"Desculpe, [<@{msg.author.id}>], mas não entendi sua mensagem\n" +
+            raise ValueError(
+                "Desculpe, mas não entendi sua mensagem\n" +
                 f"Use {BOT_COMMAND} ? para saber mais"
                 )

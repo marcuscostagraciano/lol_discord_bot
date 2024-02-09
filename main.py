@@ -21,7 +21,7 @@ async def send_message(msg: Message, user_msg: str) -> None:
             await get_reponse(BOT_COMMAND=BOT_COMMAND,
                               msg=msg, user_msg=user_msg)
         except Exception as e:
-            print(e)
+            await msg.channel.send(f"[<@{msg.author.id}>]: {e}")
 
 
 @client.event

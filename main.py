@@ -1,5 +1,4 @@
 from discord import Client, Message, Intents
-import discord
 from dotenv import load_dotenv
 
 import os
@@ -23,6 +22,7 @@ async def send_message(msg: Message, user_msg: str) -> None:
                               msg=msg, user_msg=user_msg)
         except Exception as e:
             print(e)
+
 
 @client.event
 async def on_ready() -> None:

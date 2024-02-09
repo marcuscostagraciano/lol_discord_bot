@@ -9,6 +9,7 @@ from src import get_reponse
 
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
+BOT_COMMAND: Final[str] = "!LOLKO"
 
 intents: Intents = Intents.default()
 intents.message_content = True
@@ -16,13 +17,13 @@ client: Client = Client(intents=intents)
 
 
 async def send_message(msg: Message, user_msg: str) -> None:
-    if user_msg.startswith("!LOLKO"):
-        user_msg = user_msg[7:]
+    if user_msg.startswith(BOT_COMMAND):
+        user_msg = user_msg[len(BOT_COMMAND) + 1:]
 
     try:
         response: str = get_reponse(user_msg)
         await msg.channel.send(f"{msg.author}, here's the build for {response}:",
-                               file=discord.File('udyr-TOP.png'))
+                               file=discord.File(f'{response}.png'))
     except Exception as e:
         print(e)
 

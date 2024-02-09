@@ -24,4 +24,5 @@ def get_screenshoot(champ_name: str, role: str):
     except TimeoutException:
         raise TimeoutError("Timeout")
 
-    driver.quit()
+    finally:
+        driver.quit()

@@ -19,7 +19,7 @@ def get_screenshoot(champ_name: str, role: str):
 
     try:
         data = driver.find_element(By.CLASS_NAME, HTML_CLASS_BUILD)
-        data.screenshot(f"{champ_name}-{role}.png")
+        data.screenshot(f"{champ_name} {role}.png")
 
     except TimeoutException:
         raise TimeoutError("Timeout")

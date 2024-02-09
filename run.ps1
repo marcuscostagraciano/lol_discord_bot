@@ -1,17 +1,31 @@
 # Gets the location of this file
-$ScriptPath = ($MyInvocation.MyCommand).Path
+$script_path = ($MyInvocation.MyCommand).Path
 
 # Gets the location of the parent container (folder)
-$ScriptPath = Split-Path -Parent $ScriptPath
+$script_path = Split-Path -Parent $script_path
 
 # Advanced logging /s
-Write-Output "Switching to: $ScriptPath"
+Write-Output "Switching to: $script_path"
 
 # Change directory to the folder of this project
-cd $ScriptPath
+cd $script_path
 
-# Activates the virtual environment
-.\venv\Scripts\activate
+$virtual_env_name = $null
+
+if (Test-Path "venv") {
+    $virtual_env_name = "venv"
+} else {
+    $virtual_env_name = Read-Host "Insert the venv folder name"
+}
+
+# Goes to the venv\scripts
+cd ".\$virtual_env_name\Scripts\"
+
+# Activate he venv
+.\activate
+
+# Returns to the parent folder
+cd $script_path
 
 # Runs the bot script
 python .\main.py

@@ -1,10 +1,16 @@
 from discord import Client, Message, Intents
 from dotenv import load_dotenv
 
+import logging
 import os
-from typing import Final
+from typing import Final, NoReturn
 
 from src.responses import get_response
+
+logging.basicConfig(
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    datefmt='%d/%m/%Y %H:%M',
+    level=logging.INFO)
 
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
@@ -15,31 +21,27 @@ intents.message_content = True
 client: Client = Client(intents=intents)
 
 
-async def send_message(msg: Message, user_msg: str) -> None:
-    if user_msg.startswith(BOT_COMMAND):
-        try:
-            await get_response(BOT_COMMAND=BOT_COMMAND,
-                               msg=msg, user_msg=user_msg)
-        except Exception as e:
-            await msg.channel.send(f"[<@{msg.author.id}>]: {e}")
-
-
 @client.event
 async def on_ready() -> None:
-    print(f"{client.user} is alive!")
+    logging.info(f"{client.user} is alive!")
+
+
+async def send_message(msg: Message, user_msg: str) -> None | NoReturn:
+    try:
+        await get_response(BOT_COMMAND, msg, user_msg)
+    except Exception as e:
+        await msg.channel.send(f"[<@{msg.author.id}>]: {e}")
 
 
 @client.event
 async def on_message(msg: Message) -> None:
-    if msg.author == client.user:
-        return
+    if msg.content.startswith(BOT_COMMAND):
+        username: str = str(msg.author)
+        user_msg: str = msg.content
+        channel: str = str(msg.channel)
 
-    username: str = str(msg.author)
-    user_msg: str = msg.content
-    channel: str = str(msg.channel)
-
-    print(f"[{channel}] {username}: '{user_msg}'")
-    await send_message(msg, user_msg)
+        logging.info(f"[{channel}] {username}: '{user_msg}'")
+        await send_message(msg, user_msg)
 
 
 def main() -> None:

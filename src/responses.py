@@ -21,10 +21,10 @@ async def get_response(*, BOT_COMMAND: str, msg: Message,
             except Exception as e:
                 raise e
 
-        case [("W" | "WIKI"), str(), *objects]:
+        case [("W" | "WIKI"), str(), *_]:
             try:
                 await wiki_handler(msg=msg, champ_name=user_input[1],
-                                   *objects)
+                                   opts=user_input[2:])
             except Exception as e:
                 raise e
 

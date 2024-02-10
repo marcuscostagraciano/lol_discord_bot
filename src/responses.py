@@ -7,7 +7,7 @@ from .handle_wiki import wiki_handler
 
 
 async def get_response(*, BOT_COMMAND: str, msg: Message,
-                       user_msg: str) -> NoReturn:
+                       user_msg: str) -> None | NoReturn:
     user_msg: str = user_msg[len(BOT_COMMAND):]
 
     match user_input := user_msg.upper().split(" "):

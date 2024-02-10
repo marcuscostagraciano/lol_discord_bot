@@ -18,7 +18,7 @@ ROLE_ABBREVIATION: Final[dict] = {
 
 
 async def build_handler(*, msg: Message,
-                        champ_name: str, role: str) -> NoReturn:
+                        champ_name: str, role: str) -> None | NoReturn:
     if role in ROLE_ABBREVIATION:
         role = ROLE_ABBREVIATION[role]
 

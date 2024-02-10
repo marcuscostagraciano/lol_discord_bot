@@ -18,7 +18,7 @@ CLASS_ABBREVIATION: Final[dict] = {
 
 
 async def wiki_handler(msg: Message, champ_name: str,
-                       opts: list[str]) -> NoReturn:
+                       opts: list[str]) -> None | NoReturn:
     raise NotImplementedError("WIP\n" +
                               f"passed args: {champ_name=}\n{opts=}")
 

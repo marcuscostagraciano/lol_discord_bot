@@ -7,9 +7,9 @@
 [![Static Badge](https://img.shields.io/badge/discord-2.3.2-blue?logo=discord)](https://discordpy.readthedocs.io/en/stable/#)
 
 ## Conteúdo
-- [Propósito do projeto](#propósito-do-projeto);
-- [Instalação](#instalação);
-- [Uso](#uso);
+- [Propósito do projeto](#propósito-do-projeto)
+- [Instalação](#instalação)
+- [Uso](#uso)
 
 ### Propósito do projeto
 Projeto criado com o próposito de agilizar e facilitar a jogatina do jogo _League of Legends_, através da busca de _builds_ e runas de campeões. Além da parte de entretenimento, esse projeto também tem como objetivo aprimorar e consolidar os conhecimentos sobre python e seus módulos.

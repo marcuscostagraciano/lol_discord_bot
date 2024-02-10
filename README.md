@@ -8,9 +8,9 @@
 
 
 ## Content
-- [Project purpose](#project-purpose);
-- [Installation](#installation);
-- [Usage](#usage);
+- [Project purpose](#project-purpose)
+- [Installation](#installation)
+- [Usage](#usage)
 
 ### Project purpose
 

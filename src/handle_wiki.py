@@ -19,7 +19,8 @@ CLASS_ABBREVIATION: Final[dict] = {
 
 async def wiki_handler(msg: Message, champ_name: str,
                        opts: list[str]) -> NoReturn:
-    raise NotImplementedError("WIP")
+    raise NotImplementedError("WIP\n" +
+                              f"passed args: {champ_name=}\n{opts=}")
 
     champ_name = champ_name.lower().capitalize()
     link: str = f"https://leagueoflegends.fandom.com/wiki/{champ_name}/LoL"

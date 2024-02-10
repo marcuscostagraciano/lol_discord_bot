@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 from typing import Final
 
-from src import get_reponse
+from src.responses import get_response
 
 load_dotenv()
 TOKEN: Final[str] = os.getenv("DISCORD_TOKEN")
@@ -18,8 +18,8 @@ client: Client = Client(intents=intents)
 async def send_message(msg: Message, user_msg: str) -> None:
     if user_msg.startswith(BOT_COMMAND):
         try:
-            await get_reponse(BOT_COMMAND=BOT_COMMAND,
-                              msg=msg, user_msg=user_msg)
+            await get_response(BOT_COMMAND=BOT_COMMAND,
+                               msg=msg, user_msg=user_msg)
         except Exception as e:
             await msg.channel.send(f"[<@{msg.author.id}>]: {e}")
 

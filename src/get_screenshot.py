@@ -2,24 +2,29 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
-from typing import Final
+from typing import Final, NoReturn
 
 
-def get_screenshoot(champ_name: str, role: str):
-    link = f"https://blitz.gg/lol/champions/{champ_name}/build/?&role={role}"
-
-    HTML_CLASS_BUILD: Final[str] = "⚡58417267"
-
+def get_screenshoot(opt: str, link: str, filename: str, *html_class) -> None:
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument("window-size=1600,1600")
+
+    ARGUMENTS: Final[list] = ["--incognito", "--headless",
+                              "window-size=1600,1600"]
+    for argument in ARGUMENTS:
+        options.add_argument(argument)
 
     driver = webdriver.Chrome(options=options)
     driver.get(link)
 
     try:
-        data = driver.find_element(By.CLASS_NAME, HTML_CLASS_BUILD)
-        data.screenshot(f"{champ_name} {role}.png")
+        match opt:
+            case "build":
+                data = driver.find_element(By.CLASS_NAME, html_class[0])
+                data.screenshot(filename)
+
+            case "wiki":
+                data = driver.find_element(By.CLASS_NAME, html_class[0])
+                data.screenshot(filename)
 
     except NoSuchElementException:
         raise ValueError("Escrita errada ou dados insuficientes, tente novamente")
@@ -27,5 +32,4 @@ def get_screenshoot(champ_name: str, role: str):
     except TimeoutException:
         raise TimeoutError("Timeout")
 
-    finally:
-        driver.quit()
+    driver.quit()

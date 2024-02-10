@@ -1,25 +1,14 @@
-from discord import Message, File
+from discord import Message
 
-from os import remove as rm
-from typing import Final, NoReturn
+from typing import NoReturn
 
-from . import get_screenshot
-
-role_abbreviation: Final[dict] = {
-    "T": "TOP",
-    "J": "JUNGLE",
-    "JG": "JUNGLE",
-    "M": "MID",
-    "A": "ADC",
-    "S": "SUPPORT",
-    "SUP": "SUPPORT",
-}
+from .handle_build import build_handler
+from .handle_wiki import wiki_handler
 
 
-async def get_reponse(*, BOT_COMMAND: str, msg: Message,
-                      user_msg: str) -> NoReturn:
+async def get_response(*, BOT_COMMAND: str, msg: Message,
+                       user_msg: str) -> NoReturn:
     user_msg: str = user_msg[len(BOT_COMMAND):]
-    # user_input: list[str] = user_msg.upper().split(" ")
 
     match user_input := user_msg.upper().split(" "):
         case ["?"] | ["?", *_]:
@@ -27,25 +16,17 @@ async def get_reponse(*, BOT_COMMAND: str, msg: Message,
 
         case [("B" | "BUILD"), str(), str()]:
             try:
-                champ_name: str = user_input[1]
-                role: str = user_input[2]
-
-                if role in role_abbreviation:
-                    role = role_abbreviation[role]
-
-                filename: str = f"{champ_name} {role}.png"
-
-                get_screenshot.get_screenshoot(champ_name, role)
-                await msg.channel.send(f"<@{msg.author.id}>, here's the build for " +
-                                       f"{champ_name} {role}:",
-                                       file=File(filename))
-                rm(filename)
+                await build_handler(msg=msg, champ_name=user_input[1],
+                                    role=user_input[2])
             except Exception as e:
                 raise e
 
         case [("W" | "WIKI"), str(), *objects]:
-            raise NotImplementedError("WIP - passed args: \n" +
-                                      f"{user_input[0]=} {user_input[1]=} {user_input[2:]=}")
+            try:
+                await wiki_handler(msg=msg, champ_name=user_input[1],
+                                   *objects)
+            except Exception as e:
+                raise e
 
         case _:
             raise ValueError(

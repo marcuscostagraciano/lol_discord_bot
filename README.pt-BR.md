@@ -3,16 +3,16 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
 [![pt-BR](https://img.shields.io/badge/lang-pt--BR-green.svg)](README.pt-BR.md)
 
-## Content
-- [Project purpose](#project-purpose);
-- [Installation](#installation);
-- [Usage](#usage);
+## Conteúdo
+- [Propósito do projeto](#propósito-do-projeto);
+- [Instalação](#instalação);
+- [Uso](#uso);
 
-### Project purpose
-
-
-### Installation
+### Propósito do projeto
 
 
-### Usage
+### Instalação
+
+
+### Uso
 

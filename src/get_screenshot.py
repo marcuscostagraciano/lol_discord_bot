@@ -20,7 +20,7 @@ def get_screenshoot(link: str, filename: str, html_class: str) -> None:
         data.screenshot(filename)
 
     except NoSuchElementException:
-        raise ValueError("Escrita errada ou dados insuficientes, tente novamente")
+        raise ValueError("Elemento não encontrado, tente novamente.")
 
     except TimeoutException:
         raise TimeoutError("Timeout")

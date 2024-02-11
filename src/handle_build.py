@@ -1,5 +1,6 @@
 from discord import File, Message
 
+import logging
 from os import remove as rm
 from typing import Final, NoReturn
 
@@ -21,6 +22,8 @@ async def build_handler(*, msg: Message,
                         champ_name: str, role: str) -> None | NoReturn:
     if role in ROLE_ABBREVIATION:
         role = ROLE_ABBREVIATION[role]
+
+    logging.info(f"Getting the build for: {champ_name} {role}")
 
     link = f"https://blitz.gg/lol/champions/{champ_name}/build/?&role={role}"
     HTML_CLASS_BUILD: Final[str] = "⚡58417267"

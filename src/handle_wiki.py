@@ -1,5 +1,6 @@
 from discord import File, Message
 
+import logging
 from os import remove as rm
 from typing import Final, NoReturn
 

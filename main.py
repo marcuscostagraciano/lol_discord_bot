@@ -12,7 +12,7 @@ from src.responses import get_response
 logging.basicConfig(
     format='[%(asctime)s] %(levelname)s: %(message)s',
     datefmt='%d/%m/%Y %H:%M',
-    level=logging.DEBUG)
+    level=logging.INFO)
 
 load_dotenv()
 TOKEN: Final[str] = getenv("DISCORD_TOKEN")

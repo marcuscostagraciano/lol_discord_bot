@@ -6,13 +6,14 @@ from .handle_build import build_handler
 from .handle_wiki import wiki_handler
 
 
-async def get_response(*, BOT_COMMAND: str, msg: Message,
+async def get_response(BOT_COMMAND: str, msg: Message,
                        user_msg: str) -> None | NoReturn:
     user_msg: str = user_msg[len(BOT_COMMAND):]
 
     match user_input := user_msg.upper().split(" "):
         case ["?"] | ["?", *_]:
-            await msg.channel.send(f"Use {BOT_COMMAND} [nome do campeao] [lane]")
+            await msg.channel.send(f"Use {BOT_COMMAND} [(b)uild ou (w)iki] " +
+                                   "[nome do campeao] [lane (caso build)]")
 
         case [("B" | "BUILD"), str(), str()]:
             try:

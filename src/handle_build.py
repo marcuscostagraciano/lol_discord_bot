@@ -4,7 +4,7 @@ import logging
 from os import remove as rm
 from typing import Final, NoReturn
 
-from .get_screenshot import get_build
+from .get_screenshots import get_build
 
 ROLE_ABBREVIATION: Final[dict] = {
     "T": "TOP",

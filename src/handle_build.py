@@ -4,7 +4,7 @@ import logging
 from os import remove as rm
 from typing import Final, NoReturn
 
-from .get_screenshot import get_screenshoot
+from .get_screenshot import get_build
 
 ROLE_ABBREVIATION: Final[dict] = {
     "T": "TOP",
@@ -31,7 +31,7 @@ async def build_handler(*, msg: Message,
     try:
         filename: str = f"{champ_name} {role}.png"
 
-        get_screenshoot(link, filename, HTML_CLASS_BUILD)
+        get_build(link, filename, HTML_CLASS_BUILD)
         await msg.channel.send(f"<@{msg.author.id}>, here's the build for " +
                                f"{filename}:",
                                file=File(filename))

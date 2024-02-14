@@ -17,8 +17,15 @@ async def get_response(BOT_COMMAND: str, msg: Message,
 
         case [("B" | "BUILD"), str(), str()]:
             try:
-                await build_handler(msg=msg, champ_name=user_input[1],
-                                    role=user_input[2])
+                await build_handler(msg=msg, champ_name=user_input[-2],
+                                    role=user_input[-1])
+            except Exception as e:
+                raise e
+
+        case [str(), ("B" | "BUILD"), str(), str()]:
+            try:
+                await build_handler(msg=msg, champ_name=user_input[-2],
+                                    role=user_input[-1])
             except Exception as e:
                 raise e
 

@@ -44,7 +44,8 @@ async def on_message(msg: Message) -> None:
         return
 
     # Logs and send responses only if the message start with the bot command
-    if msg.content.startswith(BOT_COMMAND):
+    # OR the bot is mentioned
+    if msg.content.startswith(BOT_COMMAND) or client.user.mentioned_in(msg):
         username: str = str(msg.author)
         user_msg: str = msg.content
         channel: str = str(msg.channel)

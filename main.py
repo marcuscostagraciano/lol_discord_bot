@@ -16,7 +16,7 @@ logging.basicConfig(
 
 load_dotenv()
 TOKEN: Final[str] = getenv("DISCORD_TOKEN")
-BOT_COMMAND: Final[str] = "!LOLKO "
+BOT_COMMAND: Final[str] = getenv("BOT_COMMAND")
 
 intents: Intents = Intents.default()
 intents.message_content = True

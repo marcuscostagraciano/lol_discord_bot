@@ -1,4 +1,4 @@
-# Repo for a League of Legends Discord Bot
+# Repositório para um Bot de League of Legends para o Discord
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
 [![pt-BR](https://img.shields.io/badge/lang-pt--BR-green.svg)](README.pt-BR.md)  

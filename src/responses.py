@@ -11,7 +11,7 @@ async def get_response(BOT_COMMAND: str, msg: Message,
     user_msg: str = user_msg[len(BOT_COMMAND):]
 
     match user_input := user_msg.upper().split(" "):
-        case ["?"] | ["?", *_]:
+        case [_, "?"] | ["?"] | ["?", *_]:
             await msg.channel.send(f"Use {BOT_COMMAND} [(b)uild ou (w)iki] " +
                                    "[nome do campeao] [lane (caso build)]")
 

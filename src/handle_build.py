@@ -13,6 +13,7 @@ ROLE_ABBREVIATION: Final[dict] = {
     "M": "MID",
     "A": "ADC",
     "BOT": "ADC",
+    "B": "ADC",
     "S": "SUPPORT",
     "SUP": "SUPPORT",
 }

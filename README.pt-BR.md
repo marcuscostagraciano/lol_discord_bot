@@ -15,7 +15,27 @@
 Projeto criado com o próposito de agilizar e facilitar a jogatina do jogo _League of Legends_, através da busca de _builds_ e runas de campeões. Além da parte de entretenimento, esse projeto também tem como objetivo aprimorar e consolidar os conhecimentos sobre python e seus módulos.
 
 ### Instalação
+A instalação consiste de 2 comandos:
+
+- Passo 1: criação do ambiente virtual:  
+`
+python -m venv <nome_da_venv>
+`
+
+- Passo 2: ativação do ambiente virtual:
+    - Caso 1: Linux:  
+    `
+    source <nome_da_venv>/bin/activate
+    `
+    - Caso 2: Windows:  
+    `
+    .\<nome_da_venv>\Scripts\activate
+    `
+
+- Passo 3: instalação dos módulos necessários:  
+`
+pip install -r requirements.txt
+`  
 
 
 ### Uso
-

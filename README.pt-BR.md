@@ -15,7 +15,7 @@
 Projeto criado com o próposito de agilizar e facilitar a jogatina do jogo _League of Legends_, através da busca de _builds_ e runas de campeões. Além da parte de entretenimento, esse projeto também tem como objetivo aprimorar e consolidar os conhecimentos sobre python e seus módulos.
 
 ### Instalação
-A instalação consiste de 2 comandos:
+A instalação consiste de 3 comandos:
 
 - Passo 1: criação do ambiente virtual:  
 `

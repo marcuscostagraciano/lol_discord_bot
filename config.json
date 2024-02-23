@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "detailed": {
+            "format": "[%(asctime)s] %(levelname)s: %(message)s",
+            "datefmt": "%d/%m/%Y %H:%M"
+        }
+    },
+    "handlers": {
+        "stdout": {
+            "class": "logging.StreamHandler",
+            "formatter": "detailed",
+            "stream": "ext://sys.stdout"
+        }
+    },
+    "loggers": {
+        "root": {
+            "level": "INFO",
+            "handlers": [
+                "stdout"
+            ]
+        }
+    }
+}

@@ -37,6 +37,7 @@ async def build_handler(*, msg: Message,
                                f"{filename}:",
                                file=File(filename))
         rm(filename)
+        logging.info(f"Build successfully sent for: {champ_name} {role}")
 
     except Exception as e:
         raise e

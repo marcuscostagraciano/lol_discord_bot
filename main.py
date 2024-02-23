@@ -3,16 +3,23 @@ from dotenv import load_dotenv
 from discord import Client, Message, Intents
 
 # Built-ins
+import json
 import logging
+import logging.config
 from os import getenv
 from typing import Final, NoReturn
 
 from src.responses import get_response
 
-logging.basicConfig(
-    format='[%(asctime)s] %(levelname)s: %(message)s',
-    datefmt='%d/%m/%Y %H:%M',
-    level=logging.INFO)
+
+logger = logging.getLogger('discord_bot')
+
+CONFIG_FILE: Final[str] = r"config.json"
+
+with open(CONFIG_FILE) as log_config_file:
+    log_config = json.load(log_config_file)
+
+logging.config.dictConfig(log_config)
 
 load_dotenv()
 TOKEN: Final[str] = getenv("DISCORD_TOKEN")
@@ -26,7 +33,7 @@ client: Client = Client(intents=intents)
 # When the bot is ready, logs it
 @client.event
 async def on_ready() -> None:
-    logging.info(f"{client.user} is alive!")
+    logger.info(f"{client.user} is alive!")
 
 
 async def send_message(msg: Message, user_msg: str) -> None | NoReturn:
@@ -50,7 +57,7 @@ async def on_message(msg: Message) -> None:
         user_msg: str = msg.content
         channel: str = str(msg.channel)
 
-        logging.info(f"[{channel}] {username}: '{user_msg}'")
+        logger.info(f"[{channel}] {username}: '{user_msg}'")
         await send_message(msg, user_msg)
 
 
